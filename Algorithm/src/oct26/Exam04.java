@@ -6,20 +6,29 @@ public class Exam04 {
 
     public static int[] solution(int[] arr) {
 
+
+        ArrayList<Integer> arrList = new ArrayList<>();
+        for (int a : arr) {
+            arrList.add(a);
+        }
+
         ArrayList<Integer> indexList = new ArrayList<>();
-        for(int i=0; i<arr.length-1; i++){
-            if(arr[i]==arr[i+1]){
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == arr[i + 1]) {
                 indexList.add(i);
             }
         }
 
-        int[] answer = new int[arr.length-indexList.size()];
-        for(int i=0; i< indexList.size();i++){
-
+        for(int i=indexList.size()-1; i>=0; i--){
+            int index = indexList.get(i);
+            arrList.remove(index);
         }
 
-
-
+        Object[] objAnswer = arrList.toArray();
+        int[] answer = new int[objAnswer.length];
+        for(int i=0; i< answer.length; i++){
+            answer[i]=(Integer)objAnswer[i];
+        }
 
         return answer;
     }
